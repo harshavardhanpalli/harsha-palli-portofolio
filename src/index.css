@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply transition-colors duration-500 bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100;
+  }
+
+  ::selection {
+    @apply bg-violet-500/30 text-slate-900 dark:text-white;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gradient-to-b from-blue-500 to-purple-600 rounded-full hover:from-blue-600 hover:to-purple-700;
+  }
+}
+
+/* Custom Keyframe Animations */
+@keyframes float-y {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes float-y-reverse {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(12px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+/* Custom utility classes */
+.animate-float-y {
+  animation: float-y 6s ease-in-out infinite;
+}
+
+.animate-float-y-reverse {
+  animation: float-y-reverse 8s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 5s ease-in-out infinite;
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  @apply bg-white/60 dark:bg-slate-900/40 backdrop-blur-xl border border-white/20 dark:border-white/5 shadow-xl shadow-slate-200/50 dark:shadow-black/30;
+}
+
+.glass-panel-hover {
+  @apply transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/10 dark:hover:shadow-purple-500/20 hover:-translate-y-1 hover:border-blue-400/30 dark:hover:border-purple-500/20;
+}
